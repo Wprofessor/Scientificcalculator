@@ -47,18 +47,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private EditText result_text;
 
-    private String edittext="";
+    private String edittext = "";
 
     //结果
-    private boolean Count=false;
+    private boolean Count = false;
     //以负号开头且后面不是减号
-    private boolean startWithOperator=false;
+    private boolean startWithOperator = false;
     //以负号开头后面是减号
-    private boolean startWithSubstract=false;
+    private boolean startWithSubstract = false;
     //不以负号开头
-    private boolean nostartWithSubstract=false;
+    private boolean nostartWithSubstract = false;
     //特殊符号
-    private boolean Others=false;
+    private boolean Others = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,385 +151,351 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v){
+    public void onClick(View v) {
 //        edittext = result_text.getText().toString();
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.num_zero:
-                if(edittext.equals("0"))
-                    edittext="0";
+                if (edittext.equals("0"))
+                    edittext = "0";
                 else
-                edittext = edittext.concat("0");
+                    edittext = edittext.concat("0");
                 break;
             case R.id.num_one:
-                if(edittext.equals("0"))
-                    edittext="1";
+                if (edittext.equals("0"))
+                    edittext = "1";
                 else
-                    edittext=edittext.concat("1");
+                    edittext = edittext.concat("1");
                 break;
             case R.id.num_two:
-                if(edittext.equals("0"))
-                    edittext="2";
+                if (edittext.equals("0"))
+                    edittext = "2";
                 else
-                edittext=edittext.concat("2");
+                    edittext = edittext.concat("2");
                 break;
             case R.id.num_three:
-                if(edittext.equals("0"))
-                    edittext="3";
+                if (edittext.equals("0"))
+                    edittext = "3";
                 else
-                edittext=edittext.concat("3");
+                    edittext = edittext.concat("3");
                 break;
             case R.id.num_four:
-                if(edittext.equals("0"))
-                    edittext="4";
+                if (edittext.equals("0"))
+                    edittext = "4";
                 else
-                edittext=edittext.concat("4");
+                    edittext = edittext.concat("4");
                 break;
             case R.id.num_five:
-                if(edittext.equals("0"))
-                    edittext="5";
+                if (edittext.equals("0"))
+                    edittext = "5";
                 else
-                edittext=edittext.concat("5");
+                    edittext = edittext.concat("5");
                 break;
             case R.id.num_six:
-                if(edittext.equals("0"))
-                    edittext="6";
+                if (edittext.equals("0"))
+                    edittext = "6";
                 else
-                edittext=edittext.concat("6");
+                    edittext = edittext.concat("6");
                 break;
             case R.id.num_seven:
-                if(edittext.equals("0"))
-                    edittext="7";
+                if (edittext.equals("0"))
+                    edittext = "7";
                 else
-                edittext=edittext.concat("7");
+                    edittext = edittext.concat("7");
                 break;
             case R.id.num_eight:
-                if(edittext.equals("0"))
-                    edittext="8";
+                if (edittext.equals("0"))
+                    edittext = "8";
                 else
-                edittext=edittext.concat("8");
+                    edittext = edittext.concat("8");
                 break;
             case R.id.num_nine:
-                if(edittext.equals("0"))
-                    edittext="9";
+                if (edittext.equals("0"))
+                    edittext = "9";
                 else
-                edittext=edittext.concat("9");
+                    edittext = edittext.concat("9");
                 break;
             case R.id.add_val:
-                if (jungeExpression()){
-                    edittext=getResult();
-                    if (edittext.equals("error")){
-                    }
-                    else
-                        edittext=edittext.concat("+");
-                }
-                else{
-                     if (Count)
-                         Count=false;
-                     if ((edittext.substring(edittext.length()-1)).equals("-"))
-                         edittext.replace("-","+");
-                     else if ((edittext.substring(edittext.length()-1)).equals("×"))
-                         edittext.replace("×","+");
-                     else if ((edittext.substring(edittext.length()-1)).equals("÷"))
-                         edittext.replace("÷","+");
-                     else if (edittext.substring(edittext.length()-1).equals("^"))
-                         edittext.replace("^","+");
-                     else if (!(edittext.substring(edittext.length()-1).equals("+")))
-                        edittext= edittext.concat("+");
-                }
-                    break;
-            case R.id.subtract_val:
-                if (jungeExpression()){
-                    edittext=getResult();
-                    if (edittext.equals("error")){
-                    }
-                    else
-                        edittext=edittext.concat("-");
-                }
-                else{
+                if (jungeExpression()) {
+                    edittext = getResult();
+                    if (edittext.equals("error")) {
+                    } else
+                        edittext = edittext.concat("+");
+                } else {
                     if (Count)
-                        Count=false;
-                    if ((edittext.substring(edittext.length()-1)).equals("+"))
-                        edittext.replace("+","-");
-                    else if ((edittext.substring(edittext.length()-1)).equals("×"))
-                        edittext.replace("×","-");
-                    else if ((edittext.substring(edittext.length()-1)).equals("÷"))
-                        edittext.replace("÷","-");
-                    else if (edittext.substring(edittext.length()-1).equals("^"))
-                        edittext.replace("^","-");
-                    else if (!(edittext.substring(edittext.length()-1).equals("-")))
-                        edittext= edittext.concat("-");
+                        Count = false;
+                    if ((edittext.substring(edittext.length() - 1)).equals("-"))
+                        edittext.replace("-", "+");
+                    else if ((edittext.substring(edittext.length() - 1)).equals("×"))
+                        edittext.replace("×", "+");
+                    else if ((edittext.substring(edittext.length() - 1)).equals("÷"))
+                        edittext.replace("÷", "+");
+                    else if (edittext.substring(edittext.length() - 1).equals("^"))
+                        edittext.replace("^", "+");
+                    else if (!(edittext.substring(edittext.length() - 1).equals("+")))
+                        edittext = edittext.concat("+");
+                }
+                break;
+            case R.id.subtract_val:
+                if (jungeExpression()) {
+                    edittext = getResult();
+                    if (edittext.equals("error")) {
+                    } else
+                        edittext = edittext.concat("-");
+                } else {
+                    if (Count)
+                        Count = false;
+                    if ((edittext.substring(edittext.length() - 1)).equals("+"))
+                        edittext.replace("+", "-");
+                    else if ((edittext.substring(edittext.length() - 1)).equals("×"))
+                        edittext.replace("×", "-");
+                    else if ((edittext.substring(edittext.length() - 1)).equals("÷"))
+                        edittext.replace("÷", "-");
+                    else if (edittext.substring(edittext.length() - 1).equals("^"))
+                        edittext.replace("^", "-");
+                    else if (!(edittext.substring(edittext.length() - 1).equals("-")))
+                        edittext = edittext.concat("-");
                 }
                 break;
             case R.id.mul_val:
-                if (jungeExpression()){
-                    edittext=getResult();
-                    if (edittext.equals("error")){
-                    }
-                    else
-                        edittext=edittext.concat("×");
-                }
-                else{
+                if (jungeExpression()) {
+                    edittext = getResult();
+                    if (edittext.equals("error")) {
+                    } else
+                        edittext = edittext.concat("×");
+                } else {
                     if (Count)
-                        Count=false;
-                    if ((edittext.substring(edittext.length()-1)).equals("-"))
-                        edittext.replace("-","×");
-                    else if ((edittext.substring(edittext.length()-1)).equals("+"))
-                        edittext.replace("+","×");
-                    else if ((edittext.substring(edittext.length()-1)).equals("÷"))
-                        edittext.replace("÷","×");
-                    else if (edittext.substring(edittext.length()-1).equals("^"))
-                        edittext.replace("^","×");
-                    else if (!(edittext.substring(edittext.length()-1).equals("×")))
-                        edittext= edittext.concat("×");
+                        Count = false;
+                    if ((edittext.substring(edittext.length() - 1)).equals("-"))
+                        edittext.replace("-", "×");
+                    else if ((edittext.substring(edittext.length() - 1)).equals("+"))
+                        edittext.replace("+", "×");
+                    else if ((edittext.substring(edittext.length() - 1)).equals("÷"))
+                        edittext.replace("÷", "×");
+                    else if (edittext.substring(edittext.length() - 1).equals("^"))
+                        edittext.replace("^", "×");
+                    else if (!(edittext.substring(edittext.length() - 1).equals("×")))
+                        edittext = edittext.concat("×");
                 }
                 break;
             case R.id.divide_val:
-                if (jungeExpression()){
-                    edittext=getResult();
-                    if (edittext.equals("error")){
-                    }
-                    else
-                        edittext=edittext.concat("÷");
-                }
-                else{
+                if (jungeExpression()) {
+                    edittext = getResult();
+                    if (edittext.equals("error")) {
+                    } else
+                        edittext = edittext.concat("÷");
+                } else {
                     if (Count)
-                        Count=false;
-                    if ((edittext.substring(edittext.length()-1)).equals("-"))
-                        edittext.replace("-","÷");
-                    else if ((edittext.substring(edittext.length()-1)).equals("+"))
-                        edittext.replace("+","÷");
-                    else if ((edittext.substring(edittext.length()-1)).equals("×"))
-                        edittext.replace("×","÷");
-                    else if (edittext.substring(edittext.length()-1).equals("^"))
-                        edittext.replace("^","÷");
-                    else if (!((edittext.substring(edittext.length()-1)).equals("÷")))
-                        edittext= edittext.concat("÷");
+                        Count = false;
+                    if ((edittext.substring(edittext.length() - 1)).equals("-"))
+                        edittext.replace("-", "÷");
+                    else if ((edittext.substring(edittext.length() - 1)).equals("+"))
+                        edittext.replace("+", "÷");
+                    else if ((edittext.substring(edittext.length() - 1)).equals("×"))
+                        edittext.replace("×", "÷");
+                    else if (edittext.substring(edittext.length() - 1).equals("^"))
+                        edittext.replace("^", "÷");
+                    else if (!((edittext.substring(edittext.length() - 1)).equals("÷")))
+                        edittext = edittext.concat("÷");
                 }
                 break;
             case R.id.percent_val:
                 double temble;
                 String Change;
-                if (edittext.equals("error")) {}
-                else{
-                    if (jungeExpression()){
-                        if (edittext.contains("+")){
-                            temble=Double.parseDouble(edittext.substring(edittext.indexOf("+")+1));
-                            temble=temble/100;
-                            Change=String.valueOf(temble);
-                            edittext=edittext.replace(edittext.substring(edittext.indexOf("+")+1),Change);
+                if (edittext.equals("error")) {
+                } else {
+                    if (jungeExpression()) {
+                        if (edittext.contains("+")) {
+                            temble = Double.parseDouble(edittext.substring(edittext.indexOf("+") + 1));
+                            temble = temble / 100;
+                            Change = String.valueOf(temble);
+                            edittext = edittext.replace(edittext.substring(edittext.indexOf("+") + 1), Change);
+                        } else if (edittext.contains("-") && !edittext.startsWith("-")) {
+                            temble = Double.parseDouble(edittext.substring(edittext.indexOf("-") + 1));
+                            temble = temble / 100;
+                            Change = String.valueOf(temble);
+                            edittext = edittext.replace(edittext.substring(edittext.indexOf("-") + 1), Change);
+                        } else if (edittext.startsWith("-") && edittext.substring(1).contains("-")) {
+                            temble = Double.parseDouble(edittext.substring(edittext.substring(1).indexOf("-") + 1));
+                            temble = temble / 100;
+                            Change = String.valueOf(temble);
+                            edittext = edittext.replace(edittext.substring(edittext.substring(1).indexOf("-") + 1), Change);
+                        } else if (edittext.contains("×")) {
+                            temble = Double.parseDouble(edittext.substring(edittext.indexOf("×") + 1));
+                            temble = temble / 100;
+                            Change = String.valueOf(temble);
+                            edittext = edittext.replace(edittext.substring(edittext.indexOf("×") + 1), Change);
+                        } else if (edittext.contains("÷")) {
+                            temble = Double.parseDouble(edittext.substring(edittext.indexOf("÷") + 1));
+                            temble = temble / 100;
+                            Change = String.valueOf(temble);
+                            edittext = edittext.replace(edittext.substring(edittext.indexOf("÷") + 1), Change);
+                        } else if (edittext.contains("^")) {
+                            temble = Double.parseDouble(edittext.substring(edittext.indexOf("^") + 1));
+                            temble = temble / 100;
+                            Change = String.valueOf(temble);
+                            edittext = edittext.replace(edittext.substring(edittext.indexOf("^") + 1), Change);
                         }
-                        else if (edittext.contains("-")&&!edittext.startsWith("-")){
-                            temble=Double.parseDouble(edittext.substring(edittext.indexOf("-")+1));
-                            temble=temble/100;
-                            Change=String.valueOf(temble);
-                            edittext=edittext.replace(edittext.substring(edittext.indexOf("-")+1),Change);
-                        }
-                        else if (edittext.startsWith("-")&&edittext.substring(1).contains("-")){
-                            temble=Double.parseDouble(edittext.substring(edittext.substring(1).indexOf("-")+1));
-                            temble=temble/100;
-                            Change=String.valueOf(temble);
-                            edittext=edittext.replace(edittext.substring(edittext.substring(1).indexOf("-")+1),Change);
-                        }
-                        else if (edittext.contains("×")){
-                            temble=Double.parseDouble(edittext.substring(edittext.indexOf("×")+1));
-                            temble=temble/100;
-                            Change=String.valueOf(temble);
-                            edittext=edittext.replace(edittext.substring(edittext.indexOf("×")+1),Change);
-                        }
-                        else if (edittext.contains("÷")){
-                            temble=Double.parseDouble(edittext.substring(edittext.indexOf("÷")+1));
-                            temble=temble/100;
-                            Change=String.valueOf(temble);
-                            edittext=edittext.replace(edittext.substring(edittext.indexOf("÷")+1),Change);
-                        }
-                        else if (edittext.contains("^")){
-                            temble=Double.parseDouble(edittext.substring(edittext.indexOf("^")+1));
-                            temble=temble/100;
-                            Change=String.valueOf(temble);
-                            edittext=edittext.replace(edittext.substring(edittext.indexOf("^")+1),Change);
-                        }
-                    }
-                    else {
-                        if ((edittext.substring(edittext.length()-1)).equals("-")||
-                                (edittext.substring(edittext.length()-1)).equals("+")||
-                                (edittext.substring(edittext.length()-1)).equals("×")||
-                                (edittext.substring(edittext.length()-1)).equals("÷")||
-                                (edittext.substring(edittext.length()-1)).equals("^")){}
-                        else{
-                            temble=Double.parseDouble(edittext);
-                            temble=temble/100;
-                            edittext=String.valueOf(temble);
+                    } else {
+                        if ((edittext.substring(edittext.length() - 1)).equals("-") ||
+                                (edittext.substring(edittext.length() - 1)).equals("+") ||
+                                (edittext.substring(edittext.length() - 1)).equals("×") ||
+                                (edittext.substring(edittext.length() - 1)).equals("÷") ||
+                                (edittext.substring(edittext.length() - 1)).equals("^")) {
+                        } else {
+                            temble = Double.parseDouble(edittext);
+                            temble = temble / 100;
+                            edittext = String.valueOf(temble);
                         }
                     }
                 }
                 break;
             case R.id.AC_val:
-                edittext="0";
+                edittext = "0";
                 break;
             case R.id.equel_val:
-                edittext=getResult();
-                Count=true;
+                edittext = getResult();
+                Count = true;
                 break;
             case R.id.del_val:
-                if (edittext.equals("error")||edittext.equals(""))
-                    edittext="0";
+                if (edittext.equals("error") || edittext.equals(""))
+                    edittext = "0";
                 else
-                edittext=edittext.substring(0,edittext.length()-1);
+                    edittext = edittext.substring(0, edittext.length() - 1);
                 break;
             case R.id.pot_val:
-                if(!Count){
-                    if (edittext.equals("error")){
-                        edittext="0";
+                if (!Count) {
+                    if (edittext.equals("error")) {
+                        edittext = "0";
+                    } else if (jungeExpression()) {
+                        if (edittext.contains("+") && !edittext.substring(edittext.indexOf("+") + 1).contains(".")) {
+                            edittext += ".";
+                        } else if (edittext.contains("×") && !edittext.substring(edittext.indexOf("×") + 1).contains(".")) {
+                            edittext += ".";
+                        } else if (edittext.contains("÷") && !edittext.substring(edittext.indexOf("÷") + 1).contains(".")) {
+                            edittext += ".";
+                        } else if (edittext.contains("-") && !edittext.startsWith("-") && !edittext.substring(edittext.indexOf("-") + 1).contains(".")) {
+                            edittext += ".";
+                        } else if (edittext.contains("^") && !edittext.substring(edittext.indexOf("^") + 1).contains(".")) {
+                            edittext += ".";
+                        } else if (edittext.startsWith("-") && edittext.substring(1).contains("-") &&
+                                !edittext.substring(edittext.substring(1).indexOf("-") + 1).contains(".")) {
+                            edittext += ".";
+                        } else {
+                        }
+                    } else if (edittext.substring(edittext.length() - 1).equals("+") || edittext.substring(edittext.length() - 1).equals("-") ||
+                            edittext.substring(edittext.length() - 1).equals("×") || edittext.substring(edittext.length() - 1).equals("÷") ||
+                            edittext.substring(edittext.length() - 1).equals("^")) {
+                    } else if (!edittext.contains("."))
+                        edittext += ".";
+                    else {
                     }
-                    else if(jungeExpression()){
-                        if (edittext.contains("+")&&!edittext.substring(edittext.indexOf("+")+1).contains(".")){
-                       edittext+=".";
-                        }
-                        else if (edittext.contains("×")&&!edittext.substring(edittext.indexOf("×")+1).contains(".")){
-                            edittext+=".";
-                        }
-                        else if (edittext.contains("÷")&&!edittext.substring(edittext.indexOf("÷")+1).contains(".")){
-                            edittext+=".";
-                        }
-                        else if (edittext.contains("-")&&!edittext.startsWith("-")&&!edittext.substring(edittext.indexOf("-")+1).contains(".")){
-                            edittext+=".";
-                        }
-                        else if (edittext.contains("^")&&!edittext.substring(edittext.indexOf("^")+1).contains(".")){
-                            edittext+=".";
-                        }
-                        else if (edittext.startsWith("-")&&edittext.substring(1).contains("-")&&
-                                !edittext.substring(edittext.substring(1).indexOf("-")+1).contains(".")){
-                            edittext+=".";
-                        }
-                       else {
-                        }
-                    }
-                    else if (edittext.substring(edittext.length()-1).equals("+")||edittext.substring(edittext.length()-1).equals("-")||
-                            edittext.substring(edittext.length()-1).equals("×")||edittext.substring(edittext.length()-1).equals("÷")||
-                            edittext.substring(edittext.length()-1).equals("^")){}
-                    else if (!edittext.contains("."))
-                        edittext+=".";
-                    else {}
-                }
-                else {
-                    Count=false;
-                    edittext="0.";
+                } else {
+                    Count = false;
+                    edittext = "0.";
                 }
                 break;
             case R.id.T_val:
-                if (!Count){
-                    if (jungeExpression()){
-                    }
-                    else if (edittext.contains("+")||edittext.contains("×")||edittext.contains("÷")||
-                            edittext.substring(edittext.length()-1).equals("-")){
-                       edittext+="Π";
-                       getResult();
-                    }
-                    else if (edittext.equals("0")){
-                        edittext="Π";
+                if (!Count) {
+                    if (jungeExpression()) {
+                    } else if (edittext.contains("+") || edittext.contains("×") || edittext.contains("÷") ||
+                            edittext.substring(edittext.length() - 1).equals("-")) {
+                        edittext += "Π";
                         getResult();
+                    } else if (edittext.equals("0")) {
+                        edittext = "Π";
+                        getResult();
+                    } else {
                     }
-                    else {};
-                }
-                else {
-                    Count=false;
+                    ;
+                } else {
+                    Count = false;
                 }
                 break;
             case R.id.e_val:
-                if (!Count){
-                    if (jungeExpression()){
-                    }
-                    else if (edittext.contains("+")||edittext.contains("×")||edittext.contains("÷")||
-                            edittext.substring(edittext.length()-1).equals("-")){
-                        edittext+="e";
+                if (!Count) {
+                    if (jungeExpression()) {
+                    } else if (edittext.contains("+") || edittext.contains("×") || edittext.contains("÷") ||
+                            edittext.substring(edittext.length() - 1).equals("-")) {
+                        edittext += "e";
                         getResult();
-                    }
-                    else if (edittext.equals("0")){
-                        edittext="e";
+                    } else if (edittext.equals("0")) {
+                        edittext = "e";
                         getResult();
+                    } else {
                     }
-                    else {};
-                }
-                else {
-                    Count=false;
+                    ;
+                } else {
+                    Count = false;
                 }
                 break;
             case R.id.finger_val:
-                if (jungeExpression()){
-                    edittext=getResult();
-                    if (edittext.equals("error")){
-                    }
-                    else
-                        edittext=edittext.concat("^");
-                }
-                else{
+                if (jungeExpression()) {
+                    edittext = getResult();
+                    if (edittext.equals("error")) {
+                    } else
+                        edittext = edittext.concat("^");
+                } else {
                     if (Count)
-                        Count=false;
-                    if ((edittext.substring(edittext.length()-1)).equals("-"))
-                        edittext.replace("-","^");
-                    else if ((edittext.substring(edittext.length()-1)).equals("+"))
-                        edittext.replace("+","^");
-                    else if ((edittext.substring(edittext.length()-1)).equals("÷"))
-                        edittext.replace("÷","^");
-                    else if (edittext.substring(edittext.length()-1).equals("×"))
-                        edittext.replace("×","^");
-                    else if (!(edittext.substring(edittext.length()-1).equals("^")))
-                        edittext= edittext.concat("^");
+                        Count = false;
+                    if ((edittext.substring(edittext.length() - 1)).equals("-"))
+                        edittext.replace("-", "^");
+                    else if ((edittext.substring(edittext.length() - 1)).equals("+"))
+                        edittext.replace("+", "^");
+                    else if ((edittext.substring(edittext.length() - 1)).equals("÷"))
+                        edittext.replace("÷", "^");
+                    else if (edittext.substring(edittext.length() - 1).equals("×"))
+                        edittext.replace("×", "^");
+                    else if (!(edittext.substring(edittext.length() - 1).equals("^")))
+                        edittext = edittext.concat("^");
                 }
                 break;
             case R.id.mark_val:
                 double temble1;
                 String Change1;
-                if (edittext.equals("error")) {}
-                else{
-                    if (jungeExpression()){
-                        if (edittext.contains("+")){
-                            temble1=Double.parseDouble(edittext.substring(edittext.indexOf("+")+1));
-                            temble1=Math.pow(temble1,-1);
-                            Change1=String.valueOf(temble1);
-                            edittext=edittext.replace(edittext.substring(edittext.indexOf("+")+1),Change1);
+                if (edittext.equals("error")) {
+                } else {
+                    if (jungeExpression()) {
+                        if (edittext.contains("+")) {
+                            temble1 = Double.parseDouble(edittext.substring(edittext.indexOf("+") + 1));
+                            temble1 = Math.pow(temble1, -1);
+                            Change1 = String.valueOf(temble1);
+                            edittext = edittext.replace(edittext.substring(edittext.indexOf("+") + 1), Change1);
+                        } else if (edittext.contains("-") && !edittext.startsWith("-")) {
+                            temble1 = Double.parseDouble(edittext.substring(edittext.indexOf("-") + 1));
+                            temble1 = Math.pow(temble1, -1);
+                            Change1 = String.valueOf(temble1);
+                            edittext = edittext.replace(edittext.substring(edittext.indexOf("-") + 1), Change1);
+                        } else if (edittext.startsWith("-") && edittext.substring(1).contains("-")) {
+                            temble1 = Double.parseDouble(edittext.substring(edittext.substring(1).indexOf("-") + 1));
+                            temble1 = Math.pow(temble1, -1);
+                            Change1 = String.valueOf(temble1);
+                            edittext = edittext.replace(edittext.substring(edittext.substring(1).indexOf("-") + 1), Change1);
+                        } else if (edittext.contains("×")) {
+                            temble1 = Double.parseDouble(edittext.substring(edittext.indexOf("×") + 1));
+                            temble1 = Math.pow(temble1, -1);
+                            Change1 = String.valueOf(temble1);
+                            edittext = edittext.replace(edittext.substring(edittext.indexOf("×") + 1), Change1);
+                        } else if (edittext.contains("÷")) {
+                            temble1 = Double.parseDouble(edittext.substring(edittext.indexOf("÷") + 1));
+                            temble1 = Math.pow(temble1, -1);
+                            Change1 = String.valueOf(temble1);
+                            edittext = edittext.replace(edittext.substring(edittext.indexOf("÷") + 1), Change1);
+                        } else if (edittext.contains("^")) {
+                            temble1 = Double.parseDouble(edittext.substring(edittext.indexOf("^") + 1));
+                            temble1 = Math.pow(temble1, -1);
+                            Change1 = String.valueOf(temble1);
+                            edittext = edittext.replace(edittext.substring(edittext.indexOf("^") + 1), Change1);
                         }
-                        else if (edittext.contains("-")&&!edittext.startsWith("-")){
-                            temble1=Double.parseDouble(edittext.substring(edittext.indexOf("-")+1));
-                            temble1=Math.pow(temble1,-1);
-                            Change1=String.valueOf(temble1);
-                            edittext=edittext.replace(edittext.substring(edittext.indexOf("-")+1),Change1);
-                        }
-                        else if (edittext.startsWith("-")&&edittext.substring(1).contains("-")){
-                            temble1=Double.parseDouble(edittext.substring(edittext.substring(1).indexOf("-")+1));
-                            temble1=Math.pow(temble1,-1);
-                            Change1=String.valueOf(temble1);
-                            edittext=edittext.replace(edittext.substring(edittext.substring(1).indexOf("-")+1),Change1);
-                        }
-                        else if (edittext.contains("×")){
-                            temble1=Double.parseDouble(edittext.substring(edittext.indexOf("×")+1));
-                            temble1=Math.pow(temble1,-1);
-                            Change1=String.valueOf(temble1);
-                            edittext=edittext.replace(edittext.substring(edittext.indexOf("×")+1),Change1);
-                        }
-                        else if (edittext.contains("÷")){
-                            temble1=Double.parseDouble(edittext.substring(edittext.indexOf("÷")+1));
-                            temble1=Math.pow(temble1,-1);
-                            Change1=String.valueOf(temble1);
-                            edittext=edittext.replace(edittext.substring(edittext.indexOf("÷")+1),Change1);
-                        }
-                        else if (edittext.contains("^")){
-                            temble1=Double.parseDouble(edittext.substring(edittext.indexOf("^")+1));
-                            temble1=Math.pow(temble1,-1);
-                            Change1=String.valueOf(temble1);
-                            edittext=edittext.replace(edittext.substring(edittext.indexOf("^")+1),Change1);
-                        }
-                    }
-                    else {
-                        if ((edittext.substring(edittext.length()-1)).equals("-")||
-                                (edittext.substring(edittext.length()-1)).equals("+")||
-                                (edittext.substring(edittext.length()-1)).equals("×")||
-                                (edittext.substring(edittext.length()-1)).equals("÷")||
-                                (edittext.substring(edittext.length()-1)).equals("^")){}
-                        else{
-                            temble1=Double.parseDouble(edittext);
-                            temble1=Math.pow(temble1,-1);
-                            edittext=String.valueOf(temble1);
+                    } else {
+                        if ((edittext.substring(edittext.length() - 1)).equals("-") ||
+                                (edittext.substring(edittext.length() - 1)).equals("+") ||
+                                (edittext.substring(edittext.length() - 1)).equals("×") ||
+                                (edittext.substring(edittext.length() - 1)).equals("÷") ||
+                                (edittext.substring(edittext.length() - 1)).equals("^")) {
+                        } else {
+                            temble1 = Double.parseDouble(edittext);
+                            temble1 = Math.pow(temble1, -1);
+                            edittext = String.valueOf(temble1);
                         }
                     }
                 }
@@ -536,127 +503,244 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.conmul_val:
                 int temble2;
                 String Change2;
-                if (edittext.equals("error")) {}
-                else{
-                    if (jungeExpression()){
-                        if (edittext.contains("+")||!(edittext.substring(edittext.indexOf("+")+1)).contains(".")){
-                            temble2=Integer.parseInt(edittext.substring(edittext.indexOf("+")+1));
-                            int s=1;
-                            for (int i=temble2;i>0;i--){
-                                s*=temble2;
-                            }
-                            Change2=String.valueOf(s);
-                            edittext=edittext.replace(edittext.substring(edittext.indexOf("+")+1),Change2);
-                        }
-                        else if (edittext.contains("-")&&!edittext.startsWith("-")&&!(edittext.substring(edittext.indexOf("-")+1)).contains(".")){
-                            temble2=Integer.parseInt(edittext.substring(edittext.indexOf("-")+1));
-                            int s=1;
-                            for (int i=temble2;i>0;i--){
-                                s*=temble2;
-                            }
-                            Change2=String.valueOf(s);
-                            edittext=edittext.replace(edittext.substring(edittext.indexOf("-")+1),Change2);
-                        }
-                        else if (edittext.startsWith("-")&&edittext.substring(1).contains("-")&&!(edittext.substring(edittext.substring(1).indexOf("-")+1)).contains(".")){
-                            temble2=Integer.parseInt(edittext.substring(edittext.substring(1).indexOf("-")+1));
-                            int s=1;
-                            for (int i=temble2;i>0;i--){
-                                s*=temble2;
-                            }
-                            Change2=String.valueOf(s);
-                            edittext=edittext.replace(edittext.substring(edittext.substring(1).indexOf("-")+1),Change2);
-                        }
-                        else if (edittext.contains("×")&&!(edittext.substring(edittext.indexOf("×")+1)).contains(".")){
-                            temble2=Integer.parseInt(edittext.substring(edittext.indexOf("×")+1));
-                            int s=1;
-                            for (int i=temble2;i>0;i--){
-                                s*=temble2;
-                            }
-                            Change2=String.valueOf(s);
-                            edittext=edittext.replace(edittext.substring(edittext.indexOf("×")+1),Change2);
-                        }
-                        else if (edittext.contains("÷")&&!(edittext.substring(edittext.indexOf("÷")+1)).contains(".")){
-                            temble2=Integer.parseInt(edittext.substring(edittext.indexOf("÷")+1));
-                            int s=1;
-                            for (int i=temble2;i>0;i--){
-                                s*=temble2;
-                            }
-                            Change2=String.valueOf(s);
-                            edittext=edittext.replace(edittext.substring(edittext.indexOf("÷")+1),Change2);
-                        }
-                        else if (edittext.contains("^")&&!(edittext.substring(edittext.indexOf("^")+1)).contains(".")){
-                            temble2=Integer.parseInt(edittext.substring(edittext.indexOf("^")+1));
-                            int s=1;
-                            for (int i=temble2;i>0;i--){
-                                s*=temble2;
-                            }
-                            Change2=String.valueOf(s);
-                            edittext=edittext.replace(edittext.substring(edittext.indexOf("^")+1),Change2);
-                        }
-                    }
-                    else {
-                        if ((edittext.substring(edittext.length()-1)).equals("-")||
-                                (edittext.substring(edittext.length()-1)).equals("+")||
-                                (edittext.substring(edittext.length()-1)).equals("×")||
-                                (edittext.substring(edittext.length()-1)).equals("÷")||
-                                (edittext.substring(edittext.length()-1)).equals("^")||
-                                edittext.contains(".")){}
+                edittext = result_text.getText().toString();
+                if (edittext.equals("error")) {
 
-                        else{
-                            temble2=Integer.parseInt(edittext);
-                            int s=1;
-                            for (int i=temble2;i>0;i--){
-                                s*=temble2;
+                } else {
+                    if (jungeExpression()) {
+                        if (edittext.contains("+") && !(edittext.substring(edittext.indexOf("+") + 1)).contains(".")) {
+                            temble2 = Integer.parseInt(edittext.substring(edittext.indexOf("+") + 1));
+                            int s = 1;
+                            for (int i = temble2; i > 0; i--) {
+                                s *= i;
                             }
-                            edittext=String.valueOf(s);
+                            Change2 = String.valueOf(s);
+                            edittext = edittext.replace(edittext.substring(edittext.indexOf("+") + 1), Change2);
+
+                        } else if (edittext.contains("-") && !edittext.startsWith("-") && !(edittext.substring(edittext.indexOf("-") + 1)).contains(".")) {
+                            temble2 = Integer.parseInt(edittext.substring(edittext.indexOf("-") + 1));
+                            int s = 1;
+                            for (int i = temble2; i > 0; i--) {
+                                s *= i;
+                            }
+                            Change2 = String.valueOf(s);
+                            edittext = edittext.replace(edittext.substring(edittext.indexOf("-") + 1), Change2);
+
+                        } else if (edittext.startsWith("-") && edittext.substring(1).contains("-") && !(edittext.substring(edittext.substring(1).indexOf("-") + 1)).contains(".")) {
+                            temble2 = Integer.parseInt(edittext.substring(edittext.substring(1).indexOf("-") + 1));
+                            int s = 1;
+                            for (int i = temble2; i > 0; i--) {
+                                s *= i;
+                            }
+                            Change2 = String.valueOf(s);
+                            edittext = edittext.replace(edittext.substring(edittext.substring(1).indexOf("-") + 1), Change2);
+
+                        } else if (edittext.contains("×") && !(edittext.substring(edittext.indexOf("×") + 1)).contains(".")) {
+                            temble2 = Integer.parseInt(edittext.substring(edittext.indexOf("×") + 1));
+                            int s = 1;
+                            for (int i = temble2; i > 0; i--) {
+                                s *= i;
+                            }
+                            Change2 = String.valueOf(s);
+                            edittext = edittext.replace(edittext.substring(edittext.indexOf("×") + 1), Change2);
+
+                        } else if (edittext.contains("÷") && !(edittext.substring(edittext.indexOf("÷") + 1)).contains(".")) {
+                            temble2 = Integer.parseInt(edittext.substring(edittext.indexOf("÷") + 1));
+                            int s = 1;
+                            for (int i = temble2; i > 0; i--) {
+                                s *= i;
+                            }
+                            Change2 = String.valueOf(s);
+                            edittext = edittext.replace(edittext.substring(edittext.indexOf("÷") + 1), Change2);
+
+                        } else if (edittext.contains("^") && !(edittext.substring(edittext.indexOf("^") + 1)).contains(".")) {
+
+                            temble2 = Integer.parseInt(edittext.substring(edittext.indexOf("^") + 1));
+                            int s = 1;
+                            for (int i = temble2; i > 0; i--) {
+                                s *= i;
+                            }
+                            Change2 = String.valueOf(s);
+                            edittext = edittext.replace(edittext.substring(edittext.indexOf("^") + 1), Change2);
+
+                        }
+                    } else {
+                        if ((edittext.substring(edittext.length() - 1)).equals("-") ||
+                                (edittext.substring(edittext.length() - 1)).equals("+") ||
+                                (edittext.substring(edittext.length() - 1)).equals("×") ||
+                                (edittext.substring(edittext.length() - 1)).equals("÷") ||
+                                (edittext.substring(edittext.length() - 1)).equals("^") ||
+                                edittext.contains(".")) {
+                        } else {
+                            temble2 = Integer.parseInt(edittext);
+                            int s = 1;
+                            for (int i = temble2; i > 0; i--) {
+                                s *= i;
+                            }
+                            edittext = String.valueOf(s);
                         }
                     }
+                }
+                break;
+            case R.id.sin_val:
+                if (jungeExpression()){
+                    getResult();
+                    if (edittext.equals("error")){}
+                    else
+                        edittext+="sin";
+                }
+                else {
+                if (Count)
+                    Count=false;
+                if (edittext.substring(edittext.length()-1).equals("+")||edittext.substring(edittext.length()-1).equals("-")
+                        ||edittext.substring(edittext.length()-1).equals("^")||edittext.substring(edittext.length()-1).equals("×")
+                        ||edittext.substring(edittext.length()-1).equals("÷")){
+                    edittext+="sin";
+                }
+                else
+                    edittext+="sin";
+                }
+                break;
+            case R.id.cos_val:
+                if (jungeExpression()){
+                    getResult();
+                    if (edittext.equals("error")){}
+                    else
+                        edittext+="cos";
+                }
+                else {
+                    if (Count)
+                        Count=false;
+                    if (edittext.substring(edittext.length()-1).equals("+")||edittext.substring(edittext.length()-1).equals("-")
+                            ||edittext.substring(edittext.length()-1).equals("^")||edittext.substring(edittext.length()-1).equals("×")
+                            ||edittext.substring(edittext.length()-1).equals("÷")){
+                        edittext+="cos";
+                    }
+                    else
+                        edittext+="cos";
+                }
+                break;
+            case R.id.tan_val:
+                if (jungeExpression()){
+                    getResult();
+                    if (edittext.equals("error")){}
+                    else
+                        edittext+="tan";
+                }
+                else {
+                    if (Count)
+                        Count=false;
+                    if (edittext.substring(edittext.length()-1).equals("+")||edittext.substring(edittext.length()-1).equals("-")
+                            ||edittext.substring(edittext.length()-1).equals("^")||edittext.substring(edittext.length()-1).equals("×")
+                            ||edittext.substring(edittext.length()-1).equals("÷")){
+                        edittext+="tan";
+                    }
+                    else
+                        edittext+="tan";
+                }
+                break;
+            case R.id.lg_val:
+                if (jungeExpression()){
+                    getResult();
+                    if (edittext.equals("error")){}
+                    else
+                        edittext+="lg";
+                }
+                else {
+                    if (Count)
+                        Count=false;
+                    if (edittext.substring(edittext.length()-1).equals("+")||edittext.substring(edittext.length()-1).equals("-")
+                            ||edittext.substring(edittext.length()-1).equals("^")||edittext.substring(edittext.length()-1).equals("×")
+                            ||edittext.substring(edittext.length()-1).equals("÷")){
+                        edittext+="lg";
+                    }
+                    else
+                        edittext+="lg";
+                }
+                break;
+            case R.id.ln_val:
+                if (jungeExpression()){
+                    getResult();
+                    if (edittext.equals("error")){}
+                    else
+                        edittext+="ln";
+                }
+                else {
+                    if (Count)
+                        Count=false;
+                    if (edittext.substring(edittext.length()-1).equals("+")||edittext.substring(edittext.length()-1).equals("-")
+                            ||edittext.substring(edittext.length()-1).equals("^")||edittext.substring(edittext.length()-1).equals("×")
+                            ||edittext.substring(edittext.length()-1).equals("÷")){
+                        edittext+="ln";
+                    }
+                    else
+                        edittext+="ln";
+                }
+                break;
+            case R.id.root_val:
+                if (jungeExpression()){
+                    getResult();
+                    if (edittext.equals("error")){}
+                    else
+                        edittext+="√";
+                }
+                else {
+                    if (Count)
+                        Count=false;
+                    if (edittext.substring(edittext.length()-1).equals("+")||edittext.substring(edittext.length()-1).equals("-")
+                            ||edittext.substring(edittext.length()-1).equals("^")||edittext.substring(edittext.length()-1).equals("×")
+                            ||edittext.substring(edittext.length()-1).equals("÷")){
+                        edittext+="√";
+                    }
+                    else
+                        edittext+="√";
                 }
                 break;
         }
         result_text.setText(edittext);
     }
 
-    private String getResult(){
-        String tempResult=null;
+    private String getResult() {
+        String tempResult = null;
+
+        String para1 = null;
+
+        String para2 = null;
+        
 
         return tempResult;
     }
 
-    private boolean jungeExpression(){
+    private boolean jungeExpression() {
         Condition();
-        String tempResult2=null;
-        if(startWithSubstract||startWithOperator||nostartWithSubstract){
-            if (edittext.contains("+")){
-                tempResult2=edittext.substring(edittext.indexOf("+")+1);
+        String tempResult2 = null;
+        if (startWithSubstract || startWithOperator || nostartWithSubstract) {
+            if (edittext.contains("+")) {
+                tempResult2 = edittext.substring(edittext.indexOf("+") + 1);
                 if (tempResult2.equals(""))
                     return false;
                 else
                     return true;
-            }
-            else if (edittext.contains("-")){
-                tempResult2=edittext.substring(edittext.lastIndexOf("-")+1);
+            } else if (edittext.contains("-")) {
+                tempResult2 = edittext.substring(edittext.lastIndexOf("-") + 1);
                 if (tempResult2.equals(""))
                     return false;
                 else
                     return true;
-            }
-            else if (edittext.contains("×")){
-                tempResult2=edittext.substring(edittext.indexOf("×")+1);
+            } else if (edittext.contains("×")) {
+                tempResult2 = edittext.substring(edittext.indexOf("×") + 1);
                 if (tempResult2.equals(""))
                     return false;
                 else
                     return true;
-            }
-            else if (edittext.contains("÷")){
-                tempResult2=edittext.substring(edittext.indexOf("÷")+1);
+            } else if (edittext.contains("÷")) {
+                tempResult2 = edittext.substring(edittext.indexOf("÷") + 1);
                 if (tempResult2.equals(""))
                     return false;
                 else
                     return true;
-            }
-            else if (edittext.contains("^")){
-                tempResult2=edittext.substring(edittext.indexOf("^")+1);
+            } else if (edittext.contains("^")) {
+                tempResult2 = edittext.substring(edittext.indexOf("^") + 1);
                 if (tempResult2.equals(""))
                     return false;
                 else
@@ -666,17 +750,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-    private void Condition(){
-        startWithOperator=edittext.startsWith("-")&&((edittext.contains("+")||edittext.contains("×")
-        ||edittext.contains("÷")||edittext.contains("^")));
+    private void Condition() {
+        startWithOperator = edittext.startsWith("-") && ((edittext.contains("+") || edittext.contains("×")
+                || edittext.contains("÷") || edittext.contains("^")));
 
-        startWithSubstract=edittext.startsWith("-")&&edittext.lastIndexOf("-")!=0;
+        startWithSubstract = edittext.startsWith("-") && edittext.lastIndexOf("-") != 0;
 
-        nostartWithSubstract=edittext.contains("+")||edittext.contains("-")||edittext.contains("×")
-                ||edittext.contains("÷")||edittext.contains("^");
+        nostartWithSubstract =!edittext.startsWith("-")&& (edittext.contains("+") || edittext.contains("-") || edittext.contains("×")
+                || edittext.contains("÷") || edittext.contains("^"));
 
-        Others=edittext.contains("sin")||edittext.contains("cos")||edittext.contains("tan")
-                ||edittext.contains("lg")||edittext.contains("ln")||
-                edittext.contains("√")||edittext.contains("!");
+        Others = edittext.contains("sin") || edittext.contains("cos") || edittext.contains("tan")
+                || edittext.contains("lg") || edittext.contains("ln") ||
+                edittext.contains("√");
     }
 }
