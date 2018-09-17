@@ -706,7 +706,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String para1 = null;
 
         String para2 = null;
-        
+
+        double ag1=0;
+
+        double ag2=0;
+
+        double result=0;
+
+        String[] math={"sin","cos","tan","lg","ln","√"};
+
+        Condition();
+
+        if(startWithOperator||startWithSubstract||nostartWithSubstract){
+            if (edittext.contains("+")){
+                para1=edittext.substring(0,edittext.indexOf("+"));
+                para2=edittext.substring(edittext.indexOf("+")+1);
+                if (para2.equals("")){
+                    if (!(para1.contains("sin")||para1.contains("cos")||para1.contains("tan")||para1.contains("lg")
+                    ||para1.contains("ln")||para1.contains("√"))){
+                        tempResult=para1;
+                    }
+                    else if (para1.contains("sin")){
+                        if (para1.substring(para1.indexOf("sin")).equals("")){}
+                    }
+                }
+            }
+        }
 
         return tempResult;
     }
