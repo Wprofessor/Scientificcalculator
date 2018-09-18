@@ -359,6 +359,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.del_val:
                 if (edittext.equals("error") || edittext.equals(""))
                     edittext = "0";
+                else if (edittext.length()==1)
+                    edittext="0";
                 else
                     edittext = edittext.substring(0, edittext.length() - 1);
                 break;
@@ -397,16 +399,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.T_val:
                 if (!Count) {
                     if (jungeExpression()) {
+                        String x1=edittext.substring(edittext.length()-3);
+                        String x2=edittext.substring(edittext.length()-2);
+                        String x3=edittext.substring(edittext.length()-1);
+                        if (x1.equals("sin")||x1.equals("cos")||x1.equals("tan")||x2.equals("lg")||x2.equals("ln")||x3.equals("√")){
+                            edittext+="Π";
+                        }
+                        else {}
                     } else if (edittext.contains("+") || edittext.contains("×") || edittext.contains("÷") ||
-                            edittext.substring(edittext.length() - 1).equals("-")) {
+                            startWithSubstract) {
                         edittext += "Π";
-                        getResult();
                     } else if (edittext.equals("0")) {
                         edittext = "Π";
-                        getResult();
                     } else {
                     }
-                    ;
+
                 } else {
                     Count = false;
                 }
@@ -414,16 +421,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.e_val:
                 if (!Count) {
                     if (jungeExpression()) {
+                        String x1=edittext.substring(edittext.length()-3);
+                        String x2=edittext.substring(edittext.length()-2);
+                        String x3=edittext.substring(edittext.length()-1);
+                        if (x1.equals("sin")||x1.equals("cos")||x1.equals("tan")||x2.equals("lg")||x2.equals("ln")||x3.equals("√")){
+                            edittext+="e";
+                        }
+                        else {}
                     } else if (edittext.contains("+") || edittext.contains("×") || edittext.contains("÷") ||
-                            edittext.substring(edittext.length() - 1).equals("-")) {
+                            startWithSubstract) {
                         edittext += "e";
-                        getResult();
                     } else if (edittext.equals("0")) {
                         edittext = "e";
-                        getResult();
+
                     } else {
                     }
-                    ;
+
                 } else {
                     Count = false;
                 }
@@ -584,7 +597,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.sin_val:
                 if (jungeExpression()){
-                    getResult();
+                    edittext=getResult();
                     if (edittext.equals("error")){}
                     else
                         edittext+="sin";
@@ -603,7 +616,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.cos_val:
                 if (jungeExpression()){
-                    getResult();
+                    edittext=getResult();
                     if (edittext.equals("error")){}
                     else
                         edittext+="cos";
@@ -622,7 +635,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.tan_val:
                 if (jungeExpression()){
-                    getResult();
+                    edittext=getResult();
                     if (edittext.equals("error")){}
                     else
                         edittext+="tan";
@@ -641,7 +654,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.lg_val:
                 if (jungeExpression()){
-                    getResult();
+                    edittext=getResult();
                     if (edittext.equals("error")){}
                     else
                         edittext+="lg";
@@ -660,7 +673,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.ln_val:
                 if (jungeExpression()){
-                    getResult();
+                    edittext=getResult();
                     if (edittext.equals("error")){}
                     else
                         edittext+="ln";
@@ -679,7 +692,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.root_val:
                 if (jungeExpression()){
-                    getResult();
+                    edittext=getResult();
                     if (edittext.equals("error")){}
                     else
                         edittext+="√";
@@ -724,7 +737,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (para2.equals("")){
                     if (!(para1.contains("sin")||para1.contains("cos")||para1.contains("tan")||para1.contains("lg")
                     ||para1.contains("ln")||para1.contains("√"))){
-                        tempResult=para1;
+                        if (para1.contains("e")){
+                            tempResult="2.71828182846";
+                        }
                     }
                     else if (para1.contains("sin")){
                         if (para1.substring(para1.indexOf("sin")).equals("")){}
