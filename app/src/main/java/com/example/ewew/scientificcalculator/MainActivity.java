@@ -740,9 +740,119 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (para1.contains("e")){
                             tempResult="2.71828182846";
                         }
+                        else if (para1.contains("Π")){
+                            tempResult="3.14159265";
+                        }
+                        else
+                            tempResult=edittext;
                     }
                     else if (para1.contains("sin")){
-                        if (para1.substring(para1.indexOf("sin")).equals("")){}
+                        try{
+                            String val1=null;
+                            String val2=null;
+                            val1=para1.substring(0,para1.indexOf("sin"));
+                            val2=edittext.substring(edittext.indexOf("sin")+3,edittext.length()-1);
+                            if (val1.equals(""))
+                                ag1=1;
+                            else
+                            ag1=Double.parseDouble(val1);
+                            ag2=Math.sin(Double.parseDouble(val2));
+                            result=ag1*ag2;
+                            tempResult=String.valueOf(result);
+                        }
+                        catch (NumberFormatException e){
+                            tempResult="error";
+                        }
+                    }
+                    else if (para1.contains("cos")){
+                        try{
+                            String val1=null;
+                            String val2=null;
+                            val1=para1.substring(0,para1.indexOf("cos"));
+                            val2=edittext.substring(edittext.indexOf("cos")+3,edittext.length()-1);
+                            if (val1.equals(""))
+                                ag1=1;
+                            else
+                                ag1=Double.parseDouble(val1);
+                            ag2=Math.cos(Double.parseDouble(val2));
+                            result=ag1*ag2;
+                            tempResult=String.valueOf(result);
+                        }
+                        catch (NumberFormatException e){
+                            tempResult="error";
+                        }
+                    }
+                    else if (para1.contains("tan")){
+                        try{
+                            String val1=null;
+                            String val2=null;
+                            val1=para1.substring(0,para1.indexOf("tan"));
+                            val2=edittext.substring(edittext.indexOf("tan")+3,edittext.length()-1);
+                            if (val1.equals(""))
+                                ag1=1;
+                            else
+                                ag1=Double.parseDouble(val1);
+                            ag2=Math.tan(Double.parseDouble(val2));
+                            result=ag1*ag2;
+                            tempResult=String.valueOf(result);
+                        }
+                        catch (NumberFormatException e){
+                            tempResult="error";
+                        }
+                    }
+                    else if (para1.contains("lg")){
+                        try{
+                            String val1=null;
+                            String val2=null;
+                            val1=para1.substring(0,para1.indexOf("lg"));
+                            val2=edittext.substring(edittext.indexOf("lg")+2,edittext.length()-1);
+                            if (val1.equals(""))
+                                ag1=1;
+                            else
+                                ag1=Double.parseDouble(val1);
+                            ag2=Math.log10(Double.parseDouble(val2));
+                            result=ag1*ag2;
+                            tempResult=String.valueOf(result);
+                        }
+                        catch (NumberFormatException e){
+                            tempResult="error";
+                        }
+                    }
+                    else if (para1.contains("√")){
+                        try{
+                            String val1=null;
+                            String val2=null;
+                            val1=para1.substring(0,para1.indexOf("√"));
+                            val2=edittext.substring(edittext.indexOf("√")+1,edittext.length()-1);
+                            if (val1.equals(""))
+                                ag1=1;
+                            else
+                                ag1=Double.parseDouble(val1);
+                            ag2=Math.sqrt(Double.parseDouble(val2));
+                            result=ag1*ag2;
+                            tempResult=String.valueOf(result);
+                        }
+                        catch (NumberFormatException e){
+                            tempResult="error";
+                        }
+                    }
+                    else if (para1.contains("ln")){
+                        try{
+                            String val1=null;
+                            String val2=null;
+                            val1=para1.substring(0,para1.indexOf("ln"));
+                            val2=edittext.substring(edittext.indexOf("ln")+2,edittext.length()-1);
+                            if (val1.equals(""))
+                                ag1=1;
+                            else
+                                ag1=Double.parseDouble(val1);
+                            ag2=Math.log(Double.parseDouble(val2));
+                            result=ag1*ag2;
+                            tempResult=String.valueOf(result);
+                        }
+                        catch (NumberFormatException e){
+                            tempResult="error";
+                        }
                     }
                 }
             }
